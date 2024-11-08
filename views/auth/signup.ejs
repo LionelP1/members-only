@@ -1,0 +1,44 @@
+<%- include('header') %>
+
+<div class="form-container">
+  <h2 class="form-title">Sign Up</h2>
+
+  <% if (message) { %>
+    <div class="form-message">
+      <%= message %>
+    </div>
+  <% } %>
+
+  <form action="/signup" method="POST" class="form">
+    <div class="form-group">
+      <label for="first_name" class="form-label">First Name</label>
+      <input type="text" id="first_name" name="first_name" required class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label for="last_name" class="form-label">Last Name</label>
+      <input type="text" id="last_name" name="last_name" required class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" id="username" name="username" required class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" name="password" required class="form-input">
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword" class="form-label">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required class="form-input">
+    </div>
+
+    <button type="submit" class="form-button">Sign Up</button>
+  </form>
+
+  <p class="form-link">
+    Already have an account? <a href="/login" class="link">Log in here</a>.
+  </p>
+</div>
