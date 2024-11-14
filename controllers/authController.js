@@ -2,15 +2,19 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 exports.getLoginPage = (req, res) => {
-  res.render('login');
+  res.render('auth/login');
 };
 
 exports.getSignupPage = (req, res) => {
-  res.render('signup');
+  res.render('auth/signup');
+};
+
+exports.getMessagePage = (req, res) => {
+  res.render('messagePage');
 };
 
 exports.handleLogin = passport.authenticate('local', {
-  successRedirect: '/', //redirect to message page
+  successRedirect: '/messagePage',
   failureRedirect: '/login',
   failureFlash: true
 });
@@ -38,7 +42,7 @@ exports.createUser = async (req, res, next) => {
       firstName, lastName, username, hashedPassword
     ]);
 
-    res.redirect('/login');
+    res.redirect('/messagePage');
   } catch (err) {
     return next(err);
   }
