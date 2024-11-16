@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Message Board</title>
+</head>
+<body>
+  <%- include('../header') %>
+  <div class="form-wrapper">
+    <form action="/messages/new" method="POST" class="message-form">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" id="title" name="title" class="form-input" required>
+      <br>
+      <label for="content" class="form-label">Message:</label>
+      <textarea id="content" name="content" class="form-textarea" required></textarea>
+      <br>
+      <button type="submit" class="form-button submit-button">Send Message</button>
+      <button type="reset" class="form-button reset-button">Clear</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const pool = require('./pools');
+const pool = require('./pool');
 
 async function getMessages() {
   const query = `

@@ -7,7 +7,7 @@ router.get('/messages', authMiddleware.isAuthenticated, messageController.getMes
 router.get('/', messageController.getHomePage);
 
 router.get('/messages/new', (req, res) => {
-    res.render('form');
+    res.render('message/messageForm');
 });
 
 router.post('/messages/new', messageController.createNewMessage);

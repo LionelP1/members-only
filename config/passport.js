@@ -8,6 +8,7 @@ passport.use(new LocalStrategy(
     try {
       const { rows } = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
       const user = rows[0];
+      console.log('User from DB:', user);
 
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });

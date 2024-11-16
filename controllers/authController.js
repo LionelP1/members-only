@@ -37,15 +37,18 @@ exports.createUser = async (req, res, next) => {
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await pool.query('INSERT INTO users (first_name, last_name, username, password) VALUES ($1, $2, $3, $4)', [
+    const { rows } = await pool.query('INSERT INTO users (first_name, last_name, username, password) VALUES ($1, $2, $3, $4) RETURNING *', [
       first_name, last_name, username, hashedPassword
     ]);
 
-    res.redirect('/messagePage');
+    const newUser = rows[0];
+    console.log(newUser);
+
+    req.login(newUser, (err) => {
+      if (err) return next(err);
+      res.redirect('/messages');
+    });
   } catch (err) {
     return next(err);
   }
 };
-
-
-

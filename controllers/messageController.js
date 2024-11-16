@@ -1,10 +1,5 @@
 const messageQueries = require("../db/queries");
 
-// exports.getMessagePage = (req, res) => {
-//   res.setHeader('Cache-Control', 'no-store'); 
-//   res.render('message/messagesPage');
-// };
-
 exports.getHomePage = (req, res) => {
   res.render('homepage');
 };
@@ -22,7 +17,12 @@ exports.getMessagePage = async (req, res) => {
 
 exports.createNewMessage = async (req, res) => {
   try {
-    await messageQueries.addMessage(req.body);
+    const messageDetails = {
+      user_id: req.user.id,
+      title: req.body.title,
+      content: req.body.content,
+    };
+    await messageQueries.addMessage(messageDetails);
     res.redirect("/messages");
   } catch (error) {
     console.error('Error creating new message:', error);
