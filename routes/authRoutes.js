@@ -11,6 +11,5 @@ router.post('/signup', authController.createUser);
 
 router.post('/logout', authController.handleLogout);
 
-router.get('/messages', authMiddleware.isAuthenticated, authController.getMessagePage);
 
 module.exports = router;
