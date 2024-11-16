@@ -1,30 +1,30 @@
 const { check, body, validationResult } = require('express-validator');
 
 exports.validateUser = [
-    check('firstName')
+    check('first_name')
         .isAlpha()
-        .withMessage('can only contain letters')
+        .withMessage('First name can only contain letters')
         .notEmpty()
-        .withMessage('is required'),
-    check('lastName')
+        .withMessage('First name is required'),
+    check('last_name')
         .isAlpha()
-        .withMessage('can only contain letters')
+        .withMessage('Last name can only contain letters')
         .notEmpty()
-        .withMessage('is required'),
+        .withMessage('Last name is required'),
     check('username')
         .isAlphanumeric()
-        .withMessage('can only contain letters and numbers')
+        .withMessage('Username can only contain letters and numbers')
         .isLength({ min: 3, max: 15 })
-        .withMessage('must be between 3 and 15 characters')
+        .withMessage('Username must be between 3 and 15 characters')
         .notEmpty()
-        .withMessage('is required'),
+        .withMessage('Username is required'),
     check('password')
         .isLength({ min: 6 })
-        .withMessage('must be at least 6 characters long')
+        .withMessage('Password must be at least 6 characters long')
         .matches(/\d/)
-        .withMessage('must contain at least one number')
+        .withMessage('Password must contain at least one number')
         .matches(/[a-zA-Z]/)
-        .withMessage('must contain at least one letter'),
+        .withMessage('Password must contain at least one letter'),
     body('confirmPassword').custom((value, { req }) => {
         if (value !== req.body.password) {
             throw new Error('Passwords do not match');

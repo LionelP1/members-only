@@ -8,6 +8,7 @@
 </head>
 <body>
     <%- include('../header') %>
+    <h1 class="title">Sign Up</h1>
 
     <% if (errors && errors.length > 0) { %>
         <div class="error-messages">
@@ -15,7 +16,6 @@
         </div>
     <% } %>
 
-    <h1 class="title">Sign Up</h1>
     <form action="/signup" method="POST">
         <div class="form-group">
             <label for="first_name">First Name:</label>
