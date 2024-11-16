@@ -17,6 +17,7 @@ app.use(passport.session());
 
 
 app.use("/", authRoutes);
+app.use("/", messageRoutes);
 
 app.use((req, res) => {
   res.status(404).send('Page not found');

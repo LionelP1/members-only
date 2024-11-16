@@ -10,9 +10,6 @@ exports.getSignupPage = (req, res) => {
   res.render('auth/signup');
 };
 
-exports.getMessagePage = (req, res) => {
-  res.render('message/messages');
-};
 
 exports.handleLogin = passport.authenticate('local', {
   successRedirect: '/messages',
