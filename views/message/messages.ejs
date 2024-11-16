@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,10 @@
   <title>Message Page</title>
 </head>
 <body>
+  <%- include('../header') %>
   <p>This is your message page.</p>
+  <form action="/logout" method="POST" style="display: inline;">
+    <button type="submit">Log Out</button>
+  </form>
 </body>
 </html>

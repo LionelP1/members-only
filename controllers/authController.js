@@ -11,11 +11,11 @@ exports.getSignupPage = (req, res) => {
 };
 
 exports.getMessagePage = (req, res) => {
-  res.render('messagePage');
+  res.render('message/messages');
 };
 
 exports.handleLogin = passport.authenticate('local', {
-  successRedirect: '/messagePage',
+  successRedirect: '/messages',
   failureRedirect: '/login',
   failureFlash: true
 });
