@@ -1,7 +1,5 @@
 const { check, body, validationResult } = require('express-validator');
 
-const { check, body, validationResult } = require('express-validator');
-
 const validateUser = [
     check('firstName')
         .isAlpha()
