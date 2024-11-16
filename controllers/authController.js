@@ -1,16 +1,23 @@
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const pool = require('../db/pool');
+const { validationResult } = require('express-validator');
 
 exports.getLoginPage = (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.render('auth/login');
 };
 
+// exports.getSignupPage = (req, res) => {
+//   res.setHeader('Cache-Control', 'no-store');
+//   res.render('auth/signup');
+// };
+
 exports.getSignupPage = (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
-  res.render('auth/signup');
+  res.render('auth/signup', { errors: [] });
 };
+
 
 exports.handleLogin = passport.authenticate('local', {
   successRedirect: '/messages',
@@ -30,9 +37,13 @@ exports.handleLogout = (req, res, next) => {
 exports.createUser = async (req, res, next) => {
   const { first_name, last_name, username, password, confirmPassword } = req.body;
 
-  if (password !== confirmPassword) {
-      //RENDER ERROR HERE
-  }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render('auth/signup', {
+        errors: errors.array(),
+        data: req.body,
+      });
+    }
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);

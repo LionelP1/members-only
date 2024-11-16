@@ -8,6 +8,13 @@
 </head>
 <body>
     <%- include('../header') %>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="error-messages">
+            <p><%= errors[0].msg %></p>
+        </div>
+    <% } %>
+
     <h1 class="title">Sign Up</h1>
     <form action="/signup" method="POST">
         <div class="form-group">

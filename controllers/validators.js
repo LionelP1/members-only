@@ -1,6 +1,6 @@
 const { check, body, validationResult } = require('express-validator');
 
-const validateUser = [
+exports.validateUser = [
     check('firstName')
         .isAlpha()
         .withMessage('can only contain letters')
