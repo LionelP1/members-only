@@ -1,18 +1,19 @@
 const messageQueries = require("../db/queries");
 
-exports.getMessagePage = (req, res) => {
-  res.setHeader('Cache-Control', 'no-store'); 
-  res.render('message/messages');
-};
+// exports.getMessagePage = (req, res) => {
+//   res.setHeader('Cache-Control', 'no-store'); 
+//   res.render('message/messagesPage');
+// };
 
 exports.getHomePage = (req, res) => {
   res.render('homepage');
 };
 
-exports.getMessageList = async (req, res) => {
+exports.getMessagePage = async (req, res) => {
   try {
     const messages = await messageQueries.getMessages();
-    res.render("", { messages: messages });
+    res.setHeader('Cache-Control', 'no-store'); 
+    res.render("message/messagesPage", { messages: messages });
   } catch (error) {
     console.error('Error fetching messages:', error);
     res.status(500).send('Internal Server Error');

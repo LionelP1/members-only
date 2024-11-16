@@ -12,5 +12,4 @@ router.get('/messages/new', (req, res) => {
 
 router.post('/messages/new', messageController.createNewMessage);
 
-
 module.exports = router;
