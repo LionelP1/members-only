@@ -3,13 +3,14 @@ const bcrypt = require('bcryptjs');
 const pool = require('../db/pool');
 
 exports.getLoginPage = (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   res.render('auth/login');
 };
 
 exports.getSignupPage = (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
   res.render('auth/signup');
 };
-
 
 exports.handleLogin = passport.authenticate('local', {
   successRedirect: '/messages',

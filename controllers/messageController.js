@@ -1,4 +1,5 @@
 exports.getMessagePage = (req, res) => {
+  res.setHeader('Cache-Control', 'no-store'); 
   res.render('message/messages');
 };
 
