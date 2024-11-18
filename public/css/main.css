@@ -1,13 +1,14 @@
 @import url('homepage.css');
+@import url('header.css');
 
 body, html {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 0 3vw;
 }
 
 body {
-  background-color: #1b1b1b;
+  background-color: #1b1b1b;  
   color: #e0e0e0;
   text-align: center;
 }
