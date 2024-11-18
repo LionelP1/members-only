@@ -7,7 +7,6 @@
 </head>
 <body>
   <%- include('../header') %>
-  <p>This is your message page.</p>
   <div class="messages-container">
     <% messages.forEach(function(message) { %>
       <%- include('message', { message: message }) %>
