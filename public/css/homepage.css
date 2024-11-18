@@ -2,7 +2,6 @@
   margin-top: 12vh;
 }
 
-
 h2 {
   font-size: 2.5rem;
   color: #8ab4f8;
@@ -25,7 +24,7 @@ h3 {
 .button {
   display: inline-block;
   background-color: #434343;
-  color: #e0e0e0;
+  color: #ffffff;
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 7px;

@@ -55,7 +55,7 @@ input:focus {
   box-shadow: 0 0 5px rgba(91, 155, 213, 0.7);
 }
 
-button[type="submit"] {
+.submit {
   background-color: #5b9bd5;
   color: #ffffff;
   padding: 10px 15px;
@@ -67,7 +67,7 @@ button[type="submit"] {
   margin-top: 10px;
 }
 
-button[type="submit"]:hover {
+.submit:hover {
   background-color: #4a8ac1;
 }
 
