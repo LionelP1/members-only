@@ -50,6 +50,15 @@ exports.createUser = async (req, res, next) => {
     }
 
   try {
+    const { rows:existingUser } = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+
+    if (existingUser.length > 0) {
+      return res.status(400).render('auth/signup', {
+        errors: [{ msg: 'Username already taken' }],
+        data: req.body,
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const { rows } = await pool.query('INSERT INTO users (first_name, last_name, username, password) VALUES ($1, $2, $3, $4) RETURNING *', [
