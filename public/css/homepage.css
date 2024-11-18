@@ -1,0 +1,38 @@
+.main-page-wrapper {
+  margin-top: 20vh;
+}
+
+
+h2 {
+  font-size: 2.5rem;
+  color: #8ab4f8;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #a1c4ff;
+  margin-bottom: 20px;
+}
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.button {
+  display: inline-block;
+  background-color: #434343;
+  color: #e0e0e0;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 1.6rem;
+}
+
+.button:hover {
+  background-color: #575757;
+}
+
