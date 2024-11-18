@@ -5,7 +5,7 @@ const { validationResult } = require('express-validator');
 
 exports.getLoginPage = (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
-  res.render('auth/login');
+  res.render('auth/login', { errors: [], data: [] });
 };
 
 exports.getSignupPage = (req, res) => {
@@ -14,11 +14,11 @@ exports.getSignupPage = (req, res) => {
 };
 
 
-exports.handleLogin = passport.authenticate('local', {
-  successRedirect: '/messages',
-  failureRedirect: '/login',
-  failureFlash: true
-});
+// exports.handleLogin = passport.authenticate('local', {
+//   successRedirect: '/messages',
+//   failureRedirect: '/login',
+//   failureFlash: true
+// });
 
 exports.handleLogout = (req, res, next) => {
   req.logout((err) => {
@@ -27,6 +27,22 @@ exports.handleLogout = (req, res, next) => {
     }
     res.redirect('/login');
   });
+};
+
+exports.handleLogin = (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) return next(err);
+    if (!user) {
+      return res.status(400).render('auth/login', {
+        errors: [{ msg: 'Invalid username or password' }],
+        data: req.body,
+      });
+    }
+    req.logIn(user, (err) => {
+      if (err) return next(err);
+      res.redirect('/messages');
+    });
+  })(req, res, next);
 };
 
 exports.createUser = async (req, res, next) => {
@@ -48,7 +64,6 @@ exports.createUser = async (req, res, next) => {
     ]);
 
     const newUser = rows[0];
-    console.log(newUser);
 
     req.login(newUser, (err) => {
       if (err) return next(err);

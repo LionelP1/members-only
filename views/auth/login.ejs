@@ -9,10 +9,17 @@
 <body>
     <%- include('../header') %>
     <h2 class="title">Login</h2>
+
+    <% if (errors && errors.length > 0) { %>
+        <div class="error-messages">
+            <p class="error"><%= errors[0].msg %></p>
+        </div>
+    <% } %>
+
     <form class="form" action="/login" method="POST">
         <div class="form-group">
             <label class="form-label" for="username">Username:</label>
-            <input class="form-input" type="text" id="username" name="username" placeholder="Username" required maxlength="50">
+            <input class="form-input" type="text" id="username" name="username" placeholder="Username" value="<%= data ? data.username : '' %>" required maxlength="50">
         </div>
         <div class="form-group">
             <label class="form-label" for="password">Password:</label>
