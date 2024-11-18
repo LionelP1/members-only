@@ -8,18 +8,18 @@
 </head>
 <body>
     <%- include('../header') %>
-    <h1 class="title">Login</h1>
-    <form action="/login" method="POST">
+    <h2 class="title">Login</h2>
+    <form class="form" action="/login" method="POST">
         <div class="form-group">
-            <label for="username">User Name:</label>
-            <input type="text" id="username" name="username" placeholder="Username" required maxlength="50">
+            <label class="form-label" for="username">User Name:</label>
+            <input class="form-input" type="text" id="username" name="username" placeholder="Username" required maxlength="50">
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" placeholder="password" required maxlength="255">
+            <label class="form-label" for="password">Password:</label>
+            <input class="form-input" type="password" id="password" name="password" placeholder="password" required maxlength="255">
         </div>
         <button type="submit">Login</button>
     </form>
-    <p>Don't have an account? <a href="/signup">Sign up here</a></p>
+    <p class="redirect-link">Don't have an account? <a href="/signup">Sign up here</a></p>
 </body>
 </html>

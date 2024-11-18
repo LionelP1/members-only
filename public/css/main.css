@@ -1,5 +1,6 @@
 @import url('homepage.css');
 @import url('header.css');
+@import url('form.css');
 
 body, html {
   font-family: Arial, sans-serif;
@@ -11,4 +12,9 @@ body {
   background-color: #1b1b1b;  
   color: #e0e0e0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* min-height: 100vh; */
 }
+

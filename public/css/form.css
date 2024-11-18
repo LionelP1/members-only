@@ -1,0 +1,89 @@
+
+.title {
+  color:#fff;
+  margin:0;
+  font-size: 2rem;
+  padding-bottom:25px;
+}
+
+.error-messages {
+  background-color: #ffe0e0;
+  color: #d8000c;
+  border: 1px solid #d8000c;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form {
+  background-color: #2a2a3d;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #555;
+  background-color: #3b3b4f;
+  color: #ffffff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1.08rem;
+}
+
+input:focus {
+  border-color: #5b9bd5;
+  outline: none;
+  box-shadow: 0 0 5px rgba(91, 155, 213, 0.7);
+}
+
+button[type="submit"] {
+  background-color: #5b9bd5;
+  color: #ffffff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #4a8ac1;
+}
+
+.redirect-link {
+  margin: 25px 0;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.redirect-link a {
+  color: #5b9bd5;
+  text-decoration: none;
+}
+
+p.redirect-link a:hover {
+  text-decoration: underline;
+}
