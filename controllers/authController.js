@@ -8,14 +8,9 @@ exports.getLoginPage = (req, res) => {
   res.render('auth/login');
 };
 
-// exports.getSignupPage = (req, res) => {
-//   res.setHeader('Cache-Control', 'no-store');
-//   res.render('auth/signup');
-// };
-
 exports.getSignupPage = (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
-  res.render('auth/signup', { errors: [] });
+  res.render('auth/signup', { errors: [], data: [] });
 };
 
 
