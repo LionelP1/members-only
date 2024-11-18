@@ -13,13 +13,6 @@ exports.getSignupPage = (req, res) => {
   res.render('auth/signup', { errors: [], data: [] });
 };
 
-
-// exports.handleLogin = passport.authenticate('local', {
-//   successRedirect: '/messages',
-//   failureRedirect: '/login',
-//   failureFlash: true
-// });
-
 exports.handleLogout = (req, res, next) => {
   req.logout((err) => {
     if (err) {

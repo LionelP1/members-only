@@ -7,6 +7,11 @@
 </head>
 <body>
   <%- include('../header') %>
+
+  <h4 class="welcome-message">
+    You are now signed in as <%= user.first_name %> <%= user.last_name %> (@<%= user.username %>)
+  </h4>
+
   <div class="nav-bar">
     <form action="/logout" method="POST">
       <button class="messages-nav" type="submit">Log Out</button>

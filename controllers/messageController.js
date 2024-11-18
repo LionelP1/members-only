@@ -8,7 +8,7 @@ exports.getMessagePage = async (req, res) => {
   try {
     const messages = await messageQueries.getMessages();
     res.setHeader('Cache-Control', 'no-store'); 
-    res.render("message/messagesPage", { messages: messages });
+    res.render("message/messagesPage", { messages: messages, user: req.user});
   } catch (error) {
     console.error('Error fetching messages:', error);
     res.status(500).send('Internal Server Error');
