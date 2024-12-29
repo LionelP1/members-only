@@ -1,4 +1,15 @@
 {
+  "name": "file-uploader",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "migrate": "prisma migrate deploy",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "@prisma/client": "^6.1.0",
     "bcrypt": "^5.1.1",
