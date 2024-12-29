@@ -1,6 +1,7 @@
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
-const pool = require('../db/pool');
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 const { validationResult } = require('express-validator');
 
 exports.getLoginPage = (req, res) => {
