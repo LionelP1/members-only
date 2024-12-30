@@ -17,7 +17,6 @@ model User {
   createdAt DateTime @default(now())
 }
 
-// Define the Message model
 model Message {
   id        Int      @id @default(autoincrement()) // Auto-increment ID
   userId    Int      // Foreign key referencing User
@@ -25,4 +24,11 @@ model Message {
   title     String
   content   String
   createdAt DateTime @default(now()) // Timestamp when the message is created
+}
+
+model Session {
+  id        String   @id @default(cuid())   // Session ID (Primary key)
+  data      Json     // Session data (could store user info or any other data)
+  createdAt DateTime @default(now())         // Timestamp when the session was created
+  updatedAt DateTime @updatedAt             // Timestamp when the session was last updated
 }
