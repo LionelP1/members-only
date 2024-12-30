@@ -18,17 +18,17 @@ model User {
 }
 
 model Message {
-  id        Int      @id @default(autoincrement()) // Auto-increment ID
+  id        Int      @id @default(autoincrement())
   userId    Int      // Foreign key referencing User
-  user      User     @relation(fields: [userId], references: [id]) // Relation to User
+  user      User     @relation(fields: [userId], references: [id])
   title     String
   content   String
   createdAt DateTime @default(now()) // Timestamp when the message is created
 }
 
 model Session {
-  id        String   @id @default(cuid())   // Session ID (Primary key)
-  data      Json     // Session data (could store user info or any other data)
-  createdAt DateTime @default(now())         // Timestamp when the session was created
-  updatedAt DateTime @updatedAt             // Timestamp when the session was last updated
+  id           String   @id @default(uuid())
+  sid          String   @unique
+  data         String
+  expiresAt      DateTime
 }
