@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const path = require('node:path');
 const passport = require('./config/passport');
-const pool = require('./db/pool'); 
 const authRoutes = require("./routes/authRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const sessionConfig = require("./config/session");

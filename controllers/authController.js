@@ -42,31 +42,35 @@ exports.handleLogin = (req, res, next) => {
 exports.createUser = async (req, res, next) => {
   const { first_name, last_name, username, password, confirmPassword } = req.body;
 
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).render('auth/signup', {
-        errors: errors.array(),
-        data: req.body,
-      });
-    }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render('auth/signup', {
+      errors: errors.array(),
+      data: req.body,
+    });
+  }
 
   try {
-    const { rows:existingUser } = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+    const existingUser = await prisma.user.findUnique({
+      where: { username: username },
+    });
 
-    if (existingUser.length > 0) {
+    if (existingUser) {
       return res.status(400).render('auth/signup', {
         errors: [{ msg: 'Username already taken' }],
         data: req.body,
       });
     }
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const { rows } = await pool.query('INSERT INTO users (first_name, last_name, username, password) VALUES ($1, $2, $3, $4) RETURNING *', [
-      first_name, last_name, username, hashedPassword
-    ]);
-
-    const newUser = rows[0];
+    const newUser = await prisma.user.create({
+      data: {
+        firstName: first_name,
+        lastName: last_name,
+        username: username,
+        password: hashedPassword,
+      },
+    });
 
     req.login(newUser, (err) => {
       if (err) return next(err);
